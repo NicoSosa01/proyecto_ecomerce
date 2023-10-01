@@ -96,8 +96,7 @@ footer p {
 }
 
 .alert {
-  position: fixed;
-  top: 80px;
+  margin-top: 2rem;
   width: 50%;
   left: 50%;
   transform: translate(-50%, 0);
@@ -187,4 +186,36 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
+}
+.form-floating {
+  margin-bottom: 1rem;
+}
+#login-form {
+  max-width: 330px;
+  margin: auto;
+  padding: 15px;
+}
+#login-form button {
+  margin-top: 1rem;
+}
+
+.search-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.326a6.5 6.5 0 1 0-1.416 1.415l3.854 3.855a1 1 0 0 0 1.415-1.416l-3.855-3.854zM1 6.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  padding-right: 30px;
+  padding-left: 30px; 
+}
+
+.product-link {
+  text-decoration: none; /* Elimina la subrayado predeterminado */
+  color: inherit; /* Hereda el color de texto de su contenedor */
+}
+
+#product-info-container {
+  margin-bottom: 20px; /* Ajusta el valor según sea necesario para el espacio entre el párrafo y el carrusel */
+}
+
+.product-image {
+  cursor: pointer;
 }

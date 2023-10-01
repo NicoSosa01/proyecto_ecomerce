@@ -32,16 +32,62 @@
           </li>
           <li class="nav-item">
           </li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="emailDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="#" id="logout">Cerrar sesion</a></li>
+            </ul>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div id="product-info-container">
       </div>
+      <div class="m-0 row justify-content-center">
+          <div id="product-image-carousel" class="carousel slide w-50 p-3" data-bs-ride="carousel">
+              <div class="carousel-inner" id="carousel-inner">
+                  <!-- Aquí se generará dinámicamente el contenido del carrusel -->
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#product-image-carousel"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#product-image-carousel"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+      </div>
+      <ul class="list-group">
+        <div id="comments"></div>
+        <div id="userComments"></div>
+      </ul>
+
+      <h3 class="mt-4">Comentar</h3>
+
+      <div class="col-sm-4">
+        <label for="opinion" class="form-label mt-2">Tu opinión</label>
+        <textarea class="form-control" rows="3" id="commentText"></textarea>
+
+        <label for="opinion" class="form-label mb-2 mt-3">Tu puntuación</label>
+        <input type="number" class="form-control pd-4" id="rating" min="1" max="5">
+
+        <button type="button" class="btn btn-primary mt-3" id="submitComment">Enviar</button>
+      </div>
+      <hr>
+      <h5>Productos relacionados</h5>
+      <div class="row mt-3" id="prodRel"></div>
     </div>
+  </div>
   </main>
   <footer class="text-muted">
     <div class="container">
