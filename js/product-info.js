@@ -28,9 +28,12 @@ function displayProductInfo(product) {
   const productInfoContainer = document.getElementById("product-info-container");
   productInfoContainer.className = "mb-2";
   productInfoContainer.innerHTML = `
-    <h2 class="mb-5 mt-5">${product.name}</h2><hr>
+    <h2 class="mb-5 mt-5">${product.name}
+    <button type="button" class="btn btn-info float-end m-2">Comprar</button>
+    </h2><hr>
     <div>
       <strong>Descripción</strong>
+      <a class="float-end m-2 text-reset text-decoration-none " href="products.html"><i class="fas fa-arrow-left"></i> Volver al listado</a>
       <p>${product.description}</p>
     </div>
     <div>
@@ -48,6 +51,63 @@ function displayProductInfo(product) {
     <p><strong>Imágenes ilustrativas</strong></p>
   `;
 
+  // Botón comprar
+const buyButton = productInfoContainer.querySelector(".btn.btn-info.float-end");
+buyButton.addEventListener("click", () => {
+  // Obtiene la información del producto
+  const productName = product.name;
+  const productCost = product.cost;
+  const productCurrency = product.currency;
+  const productCount = 1;
+  const productImage = product.images[0];
+
+  // Objeto que representa el producto
+  const productToAdd = {
+    name: productName,
+    unitCost: productCost,
+    currency: productCurrency,
+    count: productCount,
+    images: productImage
+  };
+
+  // Obtiene el carrito de compras actual desde localStorage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Verifica si el producto ya está en el carrito
+  const existingProduct = cart.find(item => item.name === productToAdd.name);
+
+  if (existingProduct) {
+    // Muestra un modal SweetAlert personalizado con la imagen del producto
+    Swal.fire({
+      title: 'Producto ya agregado',
+      text: 'Este producto ya está en tu carrito.',
+      imageUrl: productToAdd.images,
+      imageWidth: 400,
+      imageHeight: 200,
+      imageAlt: 'Imagen del producto',
+      customClass: {
+        confirmButton: 'btn btn-primary'
+      }
+    });
+  } else {
+    // Agrega el producto al carrito
+    cart.push(productToAdd);
+
+    // Actualiza el carrito en localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Notifica al usuario que el producto se agregó al carrito
+    Swal.fire({
+      title: '¡Producto agregado!',
+      text: 'El producto se ha agregado al carrito de compras.',
+      icon: 'success',
+      customClass: {
+        confirmButton: 'btn btn-success'
+      }
+    });
+  }
+});
+
   // Obtiene el contenedor del carrusel
   const carouselInner = document.getElementById("carousel-inner");
 
@@ -63,7 +123,7 @@ function displayProductInfo(product) {
 
     const image = document.createElement("img");
     image.src = imageURL;
-    image.classList.add("d-block", "img-fluid");
+    image.classList.add("d-block", "img-fluid", "w-100");
     image.alt = `${product.name} - Imagen ${index + 1}`;
 
     carouselItem.appendChild(image);
@@ -107,6 +167,12 @@ fetchProductInfo();
 async function fetchProductComments() {
   const commentsResponse = await fetch(productCommentsUrl);
   const commentsData = await commentsResponse.json();
+
+  commentsData.sort((a, b) => {
+    const dateA = new Date(a.dateTime);
+    const dateB = new Date(b.dateTime);
+    return dateA - dateB;
+  });
 
   const commentsContainer = document.getElementById("comments"); 
   
@@ -203,6 +269,7 @@ function loadCommentsFromLocalStorage() {
   const storedComments = JSON.parse(localStorage.getItem('productComments')) || {};
   const productComments = storedComments[selectedProductId] || [];
   const userCommentsContainer = document.getElementById("userComments");
+  
   
   productComments.forEach((comment) => {
     const commentElement = createCommentElement(comment);

@@ -47,10 +47,68 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
+      <h1 class="text-center p-4">Carrito de compras</h1>
+      <h3>Articulos a comprar</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody id="addNewProducts"></tbody>
+      </table>
+
+      <form action="#" class="row g-3" id="form">
+        <div>
+          <h4>Tipo de envío</h4>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="check1" checked>
+            <label class="form-check-label" for="flexRadioDefault1">
+              Premium 2 a 5 días (15%)
+            </label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="check2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Express 5 a 8 días (7%)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="check3">
+            <label class="form-check-label" for="flexRadioDefault3">
+              Standard 12 a 15 días (5%)
+            </label>
+          </div>
+
+          <br>
+          <h4>Dirección de envío</h4>
+          <div class="row">
+            <div class="col-lg-6">
+              <label for="calle" class="form-label">Calle</label>
+              <input class="form-control" id="calle" type="text" aria-label="default input example" required>
+              <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="col-lg-6">
+              <label for="calle" class="form-label">Número</label>
+              <input class="form-control" type="number" aria-label="default input example" required min="0">
+              <div class="invalid-feedback"></div>
+            </div>
+
+            <div class="col-lg-6">
+              <label for="calle" class="form-label">Esquina</label>
+              <input class="form-control" type="text" aria-label="default input example" required>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+        </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
