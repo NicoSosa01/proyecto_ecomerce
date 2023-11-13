@@ -9,9 +9,36 @@
   font-weight: bold;
 }
 
+nav {
+  border-bottom: 3px solid #008bcc;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); 
+}
+
 nav a {
   text-decoration: none;
+  position: relative;
+  color: #333; 
 }
+
+nav a::after {
+  content: ""; 
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  transition: background 0.3s;
+}
+
+nav a:hover {
+  color: #008bcc !important; 
+}
+
+nav a:hover::after {
+  background: #008bcc ;
+}
+
 
 .bd-placeholder-img {
   font-size: 1.125rem;
@@ -187,35 +214,341 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+/* Fromulario de ingreso */
 .form-floating {
   margin-bottom: 1rem;
 }
 #login-form {
-  max-width: 330px;
-  margin: auto;
-  padding: 15px;
+  max-width: 400px; 
+  margin: 0 auto; 
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px; 
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); 
+  text-align: center;
 }
 #login-form button {
   margin-top: 1rem;
 }
 
-.search-input {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.326a6.5 6.5 0 1 0-1.416 1.415l3.854 3.855a1 1 0 0 0 1.415-1.416l-3.855-3.854zM1 6.5a5.5 5.5 0 1 1 11 0 5.5 5.5 0 0 1-11 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: 8px center;
-  padding-right: 30px;
-  padding-left: 30px; 
+.btn-login {
+  background: #009dff;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  font-weight: 900;
+  font-size: 18px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+}
+
+.btn-login:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
+}
+
+.btn-login:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
 }
 
 .product-link {
-  text-decoration: none; /* Elimina la subrayado predeterminado */
-  color: inherit; /* Hereda el color de texto de su contenedor */
+  text-decoration: none;
+  color: inherit;
 }
 
 #product-info-container {
-  margin-bottom: 20px; /* Ajusta el valor según sea necesario para el espacio entre el párrafo y el carrusel */
+  margin-bottom: 20px;
 }
 
-.product-image {
+
+.custom-rounded {
+  border-radius: 50%; 
+  width: 200px;
+  height: 200px;
   cursor: pointer;
 }
+
+.img-max-width {
+  max-width: 100%; 
+}
+
+.img-min-width {
+  min-width: 150px;
+}
+
+.related-product-card {
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.related-product-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+
+/* products-info */
+.cssbuttons-io-button {
+  background: #008bcc;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #008bcc;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #008bcc;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #008bcc;
+  transform: rotate(180deg);
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+  transform: rotate(180deg);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+
+.btn-pay {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff ;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-pay:hover {
+  background-color: #008bcc !important;
+  box-shadow: 0px 15px 20px rgba(46, 229, 229, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.btn-pay:active {
+  transform: translateY(-1px);
+}
+
+/* cart */
+.delete-row {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.delete-row:hover {
+  width: 80px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.delete-row:hover .svgIcon {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(60%);
+}
+
+.delete-row::before {
+  position: absolute;
+  top: -20px;
+  content: "Eliminar";
+  color: white;
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.delete-row:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
+}
+
+.btn-buy{
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid #009dff;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #009dff;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.btn-buy:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #009dff;
+  z-index: -1;
+}
+
+.btn-buy:hover, .btn-buy:focus {
+  color: rgb(0, 0, 0);
+}
+
+.btn-buy:hover:before, .btn-buy:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.btn-buy:active {
+  transform: scale(0.9);
+}
+
+.btn-submit {
+  position: relative;
+  font-family: 'Heebo', sans-serif;
+  padding: 12px 40px;
+  border: 0;
+  background: #008bcc;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1em;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.562);
+  transform: scale(1.01);
+  box-shadow: inset 0px 0px 10px #008bcc;
+}
+
+.btn-submit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 50%;
+  height: 100%;
+  transform: rotate(80deg);
+  background: #ffffff77;
+  filter: blur(10px);
+  transition: 0.6s ease-in-out;
+}
+
+.btn-submit:hover::after {
+  left: 100%;
+}
+
+/* profile */
+.btn-profile {
+  position: relative;
+  font-family: 'Heebo', sans-serif;
+  padding: 12px 40px;
+  border: 0;
+  background: #008bcc;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1.4em;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease-in-out
+}
+
+.btn-profile::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100px;
+  width: 50%;
+  height: 100%;
+  transform: rotate(80deg);
+  background: #ffffff77;
+  filter: blur(10px);
+  transition: 0.6s ease-in-out;
+}
+
+.btn-profile:hover::after {
+  left: 100%;
+}
+
+.btn-profile:hover {
+  text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.562);
+  transform: scale(1.01);
+  box-shadow: inset 0px 0px 10px #008bcc;
+}
+

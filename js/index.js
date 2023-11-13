@@ -43,11 +43,11 @@ if (logoutButton) {
   });
 }
 
-/*!
+ /*!
  Inicio del codigo darkmode/light/auto
  */
 
-(() => {
+ (() => {
   'use strict'
 
   const storedTheme = localStorage.getItem('theme')
@@ -120,5 +120,6 @@ if (logoutButton) {
 })()
 
 /*!
- Fin del codigo darkmode/light/auto
- */
+Fin del codigo darkmode/light/auto
+*/
+

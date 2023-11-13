@@ -36,10 +36,10 @@ function filterAndDisplayProducts() {
     const maxPrice = parseFloat(document.getElementById("rangeFilterPriceMax").value) || Infinity;
 
     // Se filtran los productos en base a rango de precio y búsqueda
-    const filteredProducts = productsData.filter(product => {   //filteredProducts almacenará un nuevo array de productos filtrados a partir del array productsData
-        const productPrice = parseFloat(product.cost); //Para cada producto en el array productsData, se obtiene el precio del producto y se convierte en un número de utilizando parseFloat().
-        return productPrice >= minPrice && productPrice <= maxPrice && // La función de filtro devuelve true o false para cada producto según si cumple o no con las condiciones de filtrado. 
-            (product.name.toLowerCase().includes(searchQuery) || // La descripción del producto, convertida a minúsculas, también debe incluir la searchQuery.
+    const filteredProducts = productsData.filter(product => {   
+        const productPrice = parseFloat(product.cost); 
+        return productPrice >= minPrice && productPrice <= maxPrice && 
+            (product.name.toLowerCase().includes(searchQuery) || 
                 product.description.toLowerCase().includes(searchQuery));
     });
 
@@ -83,16 +83,16 @@ function filterAndDisplayProducts() {
 }
 
 // Función para ordenar productos según el criterio proporcionado
-function sortProducts(productsArray, criteria) { // esta funcion toma como parámetros un array de productos (productsArray) y un criterio de ordenamiento (criteria)
-    return productsArray.slice().sort((a, b) => { // devuelve un nuevo array ordenado, basado en el array de productos original (productsArray).Se crea una copia superficial (slice) del array de productos para evitar modificar el array original. Luego, se utiliza sort() para realizar el ordenamiento. 
-        if (criteria === "sortAscPrice") { // Se verifica el criterio de ordenamiento proporcionado. Si es "sortAscPrice", se realizará un orden ascendente por precio.
-            return parseFloat(a.cost) - parseFloat(b.cost); //Para orden ascendente por precio, se resta el precio del producto a del precio del producto b. Esto crea una comparación numérica que ordenará los productos por precio ascendente.
-        } else if (criteria === "sortDescPrice") { //  Si el criterio es "sortDescPrice", se realizará un orden descendente por precio.
-            return parseFloat(b.cost) - parseFloat(a.cost); // Para orden descendente por precio, se resta el precio del producto b del precio del producto a. Esto crea una comparación numérica que ordenará los productos por precio descendente.
-        } else if (criteria === "sortDescRelevance") { //Si el criterio es "sortDescRelevance", se realizará un orden descendente por relevancia (cantidad vendida).
-            return parseInt(b.soldCount) - parseInt(a.soldCount); //Para orden descendente por relevancia, se resta la cantidad vendida del producto b de la cantidad vendida del producto a. Esto ordenará los productos por cantidad vendida descendente.
+function sortProducts(productsArray, criteria) { 
+    return productsArray.slice().sort((a, b) => {  
+        if (criteria === "sortAscPrice") { 
+            return parseFloat(a.cost) - parseFloat(b.cost);  
+        } else if (criteria === "sortDescPrice") { 
+            return parseFloat(b.cost) - parseFloat(a.cost); 
+        } else if (criteria === "sortDescRelevance") { 
+            return parseInt(b.soldCount) - parseInt(a.soldCount); 
         } else {
-            return 0; // No hay ordenamiento, mantiene el orden actual
+            return 0; 
         }
     });
 }
@@ -102,32 +102,32 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchProducts(); // Se obtienen y muestran los productos iniciales
 
     // Agrega listeners para los botones de ordenamiento y filtros
-    document.getElementById("sortAscPrice").addEventListener("click", function () { // Cuando el botón "Ordenar Ascendente" es clickeado
-        currentSortCriteria = "sortAscPrice";  // Se actualiza el criterio de orden actual
-        filterAndDisplayProducts();   // Se llama a la función filterAndDisplayProducts() para aplicar el nuevo orden y mostrar los productos
+    document.getElementById("sortAscPrice").addEventListener("click", function () { 
+        currentSortCriteria = "sortAscPrice";  
+        filterAndDisplayProducts();   
     });
 
-    document.getElementById("sortDescPrice").addEventListener("click", function () { // Cuando el botón "Ordenar Descendente" es clickeado
-        currentSortCriteria = "sortDescPrice"; // Se actualiza el criterio de orden actual
-        filterAndDisplayProducts();  // Se llama a la función filterAndDisplayProducts() para aplicar el nuevo orden y mostrar los productos
+    document.getElementById("sortDescPrice").addEventListener("click", function () { 
+        currentSortCriteria = "sortDescPrice";
+        filterAndDisplayProducts();  
     });
 
-    document.getElementById("sortDescRelevance").addEventListener("click", function () { // Cuando el botón "Ordenar por Relevancia" es clickeado
-        currentSortCriteria = "sortDescRelevance"; // Se actualiza el criterio de orden actual
-        filterAndDisplayProducts();  // Se llama a la función filterAndDisplayProducts() para aplicar el nuevo orden y mostrar los productos
+    document.getElementById("sortDescRelevance").addEventListener("click", function () { 
+        currentSortCriteria = "sortDescRelevance"; 
+        filterAndDisplayProducts();  
     });
 
     // Escuchador de evento para la entrada de búsqueda
     document.getElementById("searchInput").addEventListener("input", function () {  
-        searchQuery = this.value.toLowerCase(); // Se actualiza la consulta de búsqueda actual en minúsculas
-        filterAndDisplayProducts();   // Se llama a la función filterAndDisplayProducts() para aplicar la nueva búsqueda y mostrar los productos
+        searchQuery = this.value.toLowerCase(); 
+        filterAndDisplayProducts();   
     });
 
     // Escuchadores de evento para los botones de limpieza y rango de precio
-    document.getElementById("clearRangeFilter").addEventListener("click", function () { // Cuando el botón "Limpiar" es clickeado
-        document.getElementById("rangeFilterPriceMin").value = "";  // Se limpian los valores de los elementos de rango de precio
-        document.getElementById("rangeFilterPriceMax").value = "";  // Se limpian los valores de los elementos de rango de precio
-        filterAndDisplayProducts();  // Se llama a la función filterAndDisplayProducts() para aplicar los cambios y mostrar los productos
+    document.getElementById("clearRangeFilter").addEventListener("click", function () { 
+        document.getElementById("rangeFilterPriceMin").value = "";  
+        document.getElementById("rangeFilterPriceMax").value = "";  
+        filterAndDisplayProducts();  
     });
 
     // Cuando ocurre un evento de click en los elementos relacionados con el rango de precio

@@ -14,11 +14,12 @@ window.addEventListener("load", () => {
       localStorage.setItem('password', password.value);
     }
   )});
-  /*!
+
+   /*!
  Inicio del codigo darkmode/light/auto
  */
 
- (() => {
+(() => {
   'use strict'
 
   const storedTheme = localStorage.getItem('theme')
@@ -93,7 +94,6 @@ window.addEventListener("load", () => {
 /*!
 Fin del codigo darkmode/light/auto
 */
-
   
 
 

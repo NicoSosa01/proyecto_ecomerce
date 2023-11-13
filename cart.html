@@ -49,19 +49,21 @@
     <div class="container">
       <h1 class="text-center p-4">Carrito de compras</h1>
       <h3>Articulos a comprar</h3>
-      <table class="table">
+      <div class="table-responsive">
+    <table class="table">
         <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Costo</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Subtotal</th>
-            <th scope="col"></th>
-          </tr>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col"></th>
+            </tr>
         </thead>
         <tbody id="addNewProducts"></tbody>
-      </table>
+    </table>
+</div>
 
       <form action="#" method="get" id="form" class="row g-3 needs-validation" novalidate>
         <div>
@@ -92,19 +94,19 @@
 
           <h4>Dirección de envío</h4>
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-sm-6 col-md-6">
               <label for="street" class="form-label">Calle</label>
               <input class="form-control" id="street" type="text" required>
               <div class="invalid-feedback">Ingresa una calle</div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-sm-6 col-md-6">
               <label for="number" class="form-label">Número</label>
               <input class="form-control" type="number" min="0" required>
               <div class="invalid-feedback">Ingresa un número</div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 col-sm-6 col-md-6">
               <label for="street" class="form-label">Esquina</label>
               <input class="form-control" type="text" required>
               <div class="invalid-feedback">Ingrese una esquina</div>
@@ -203,16 +205,17 @@
 
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cerrar</button>
               </div>
             </div>
           </div>
         </div>
 
         
-        <button class="btn btn-primary" type="submit" id="buyBtn">Finalizar Compra</button>
+        <button class="btn-buy" type="submit" id="buyBtn">Finalizar Compra</button>
 
       </form>
+    </main>
 
       <!--Inicio del darkmode / lightmode / automode -->
       <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">

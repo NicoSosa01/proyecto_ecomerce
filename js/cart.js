@@ -8,40 +8,39 @@ async function loadCart() {
     const tbody = document.getElementById("addNewProducts");
 
     // Limpia el contenido de la tabla antes de agregar los productos
-    tbody.innerHTML = '';   
+    tbody.innerHTML = '';
 
     // Recorre los productos en el carrito almacenados en el almacenamiento local
     cart.forEach((product) => {
       const { id, name, unitCost, count, currency, images } = product;
       const subtotal = unitCost * count;
-
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td><img src="${images}" alt="${name}" class="img-thumbnail" width="150"></td>
+        <td><img src="${images}" alt="${name}" class="img-thumbnail img-max-width img-min-width" width="150"></td>
         <td>${name}</td>
         <td>${unitCost} ${currency}</td>
         <td><input type="number" value="${count}" min="1" data-id="${id}" data-unitcost="${unitCost}" data-currency="${currency}"></td>
         <td class="subtotal">${subtotal} ${currency}</td>
-        <td><button class="delete-row"><i class="fas fa-trash-alt" style="color: #e70d0d;"></i></button></td>
+        <td><button class="delete-row"><svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
+        </button></td>
       `;
 
       tbody.appendChild(row);
 
       const inputElement = row.querySelector("input");
       inputElement.addEventListener("input", () => {
-        const newCount = parseInt(inputElement.value, 10);
+      const newCount = parseInt(inputElement.value, 10);
 
-        //Actualiza la cantidad solo para el producto especifico que se esta modificando
-        product.count = newCount;
+      // Actualiza la cantidad solo para el producto específico que se está modificando
+      product.count = newCount;
 
-        //Actualiza el carrito en el almacenamiento local
-        localStorage.setItem("cart", JSON.stringify(cart));  
+      // Actualiza el carrito en el almacenamiento local
+      localStorage.setItem("cart", JSON.stringify(cart));
         
-
-        const newSubtotal = newCount * unitCost;
-        const subtotalElement = row.querySelector(".subtotal");
-        subtotalElement.textContent = `${newSubtotal} ${currency}`;
-        updateTotals(); // Llamada a la función para actualizar totales
+      const newSubtotal = newCount * unitCost;
+      const subtotalElement = row.querySelector(".subtotal");
+      subtotalElement.textContent = `${newSubtotal} ${currency}`;
+      updateTotals(); // Llamada a la función para actualizar totales
       });
       // Agrega el evento de clic para eliminar la fila
       const deleteButton = row.querySelector(".delete-row");
@@ -116,9 +115,9 @@ function updateTotals() {
   const total = subtotal + shippingCost;
 
   // Actualiza los elementos en el HTML
-  document.getElementById("priceSubtotal").textContent = `USD ${subtotal}`;
+  document.getElementById("priceSubtotal").textContent = `USD ${Math.round(subtotal)}`;
   document.getElementById("priceShipping").textContent = `USD ${shippingCost}`;
-  document.getElementById("priceTotal").textContent = `USD ${total}`;
+  document.getElementById("priceTotal").textContent = `USD ${Math.round(total)}`;
 }
 
 // Llama a la función para cargar y mostrar los productos en el carrito

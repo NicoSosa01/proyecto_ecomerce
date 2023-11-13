@@ -177,7 +177,7 @@ const logUser = localStorage.getItem('email');
     });
   }
 
-   /*!
+  /*!
  Inicio del codigo darkmode/light/auto
  */
 
